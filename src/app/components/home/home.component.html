@@ -1,0 +1,78 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" (click)="display()">
+ add note
+</button>
+
+<!-- Modal -->
+<form [formGroup]="noteform" (ngSubmit)="addnote()">
+  <div class="container shadow-sm shadow-gray-400 w-50  p-6 text-center  d-none  bg-slate-100 position-fixed top-30 bottom-30 left-0 right-0 "#nagat>
+    <div class="flex items-center justify-between  pb-2 mb-2 border-bottom border-b-orange-300">
+        <h2 class="font-bold">Add note</h2>
+      <i class="fa fa-close ms-44 cursor-pointer"(click)="hide()"></i>
+    </div>
+         <div class="flex flex-col gap-3">
+            <div>
+         
+              <input
+                  class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                  type="text" formControlName="title" placeholder="title">
+          </div>   
+          <div>
+          
+            <input
+                class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                type="text" formControlName="content" placeholder="content">
+        </div>
+          </div>
+          <div class="flex justify-end gap-2 mt-2  ">
+            <button type="button" class="btn btn-secondary"(click)="hide()">close</button>
+            <button type="submit" class="btn  btn-primary">add note</button>
+          </div>
+    </div>
+</form>
+<form [formGroup]="updatenoteform"(ngSubmit)="update()" class="bg-slate-300">
+  <div class="container  w-50  p-6 text-center  d-none bg-slate-100 position-fixed top-30 bottom-30 left-0 right-0  "#nagattt>
+    <div class="flex items-center justify-between  pb-2 mb-2 border-bottom border-b-orange-300 shadow-md shadow-gray-200 ">
+        <h2 class="font-bold">updatenote</h2>
+      <i class="fa fa-close ms-44 cursor-pointer"(click)="hideupdatenote()"></i>
+    </div>
+         <div class="flex flex-col gap-3">
+            <div>
+         
+              <input
+                  class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                  type="text" formControlName="title" placeholder="title">
+          </div>   
+          <div>
+          
+            <input
+                class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                type="text" formControlName="content" placeholder="content">
+        </div>
+          </div>
+          <div class="flex justify-end gap-2 mt-2  ">
+            <button type="button" class="btn btn-secondary"(click)="hideupdatenote()">close</button>
+            <button type="submit" class="btn  btn-primary"(click)="update()">updatenote</button>
+          </div>
+    </div>
+</form>
+<div class="container shadow-sm shadow-gray-400 w-70  p-6 text-center  ">
+  <div class="row gap-2  col-12">
+    @for (item of notes; track $index) {
+      <div class="col-12 shadow-sm shadow-gray-400  p-3 m-2 col-md-3 bg-slate-100">
+      <h2 class="font-bold">
+{{item.title}}
+    </h2>
+      <p>
+{{item.content}}
+    </p>
+    <div class="flex justify-end gap-2 mt-2  items-center">
+      <button type="button" class="btn btn-primary"(click)="displayupdatenote(item)">update</button>
+      <button type="submit" class="btn  btn-danger"(click)="deletenote(item._id)">delete</button>
+    </div>
+  </div>
+  }
+  </div>
+     
+  </div>
+ 
